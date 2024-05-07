@@ -26,7 +26,7 @@ public class DeliveryController {
 
     @PutMapping("/delivery/{id}/deliveryman/{deliverymanCpf}")
     public void changeDeliveryStatus(@PathVariable Integer id, @PathVariable String deliverymanCpf, @RequestParam(required = true) String status){
-        deliveryService.putDelivery(deliverymanCpf, status);
+        deliveryService.putDelivery(deliverymanCpf, status, id);
     }
 
 }

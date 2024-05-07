@@ -57,21 +57,20 @@ public class DeliveryService {
 
     }
 
-    public void putDelivery(String deliverymanCpf, String status) {
+    public void putDelivery(String deliverymanCpf, String status, Integer id) {
         if (!status.equals("CONFIRMADO") && !status.equals("ERRO") && !status.equals("FINALIZADO")) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Status invalido");
         }
 
-        List<Delivery> deliveries = deliveryRepository.findByDeliverymanCpf(deliverymanCpf);
+        Optional<Delivery> delivery = deliveryRepository.findById(id);
 
-        if (deliveries.isEmpty()) {
+        if (!delivery.isPresent()) {
            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Delivery not found");
         }
 
-        Delivery delivery = deliveries.get(0);
-        delivery.setStatus(status);
+        delivery.get().setStatus(status);
 
-        deliveryRepository.save(delivery);
+        deliveryRepository.save(delivery.get());
     }
 
     private String convertStatusToDescription(Integer status) {
