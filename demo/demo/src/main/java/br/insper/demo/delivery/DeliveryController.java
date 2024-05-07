@@ -24,4 +24,9 @@ public class DeliveryController {
         deliveryService.deleteDelevery(idDelivery);
     }
 
+    @PutMapping("/delivery")
+    public void putDelivery(@RequestParam(required = true) Integer idDelivery, @RequestBody Integer status ){
+        deliveryService.putDelivery(idDelivery, status);
+    }
+
 }

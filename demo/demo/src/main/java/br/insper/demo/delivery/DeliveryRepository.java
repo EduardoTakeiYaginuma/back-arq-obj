@@ -9,4 +9,6 @@ public interface DeliveryRepository extends JpaRepository<Delivery, Integer> {
     List<Delivery> findByDeliveryManId(Integer idDeliveryMan);
 
     Optional<Delivery> findById(Integer id);
+
+
 }

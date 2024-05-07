@@ -57,4 +57,16 @@ public class DeliveryService {
         deliveryRepository.deleteById(idDelivery);
 
     }
+
+    public void putDelivery(Integer idDelivery, Integer status) {
+        Delivery delivery = deliveryRepository.findById(idDelivery)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Delivery not found"));
+
+        delivery.setStatus(convertStatusToDescription(status));
+        deliveryRepository.save(delivery);
+    }
+
+    private String convertStatusToDescription(Integer status) {
+        return status == 1 ? "finalizado" : String.valueOf(status);
+    }
 }
