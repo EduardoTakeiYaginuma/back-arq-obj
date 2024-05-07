@@ -16,12 +16,12 @@ public class DeliveryController {
         return deliveryService.saveDelivery(delivery);
     }
     @GetMapping("/delivery")
-    public List<Delivery> getDelivery(@RequestParam(required = false) Integer idDeliveryman) {
-        return deliveryService.listDelivery(idDeliveryman);
+    public List<Delivery> getDelivery(@RequestParam(required = false) String deliverymanCpf) {
+        return deliveryService.listDelivery(deliverymanCpf);
     }
-    @DeleteMapping("/delivery")
-    public void deleteDelivery(@RequestParam(required = true) Integer idDelivery){
-        deliveryService.deleteDelevery(idDelivery);
+    @DeleteMapping("/delivery/{id}")
+    public void deleteDelivery(@PathVariable Integer id){
+        deliveryService.deleteDelevery(id);
     }
 
     @PutMapping("/delivery")

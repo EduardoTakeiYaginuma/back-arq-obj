@@ -31,7 +31,7 @@ public class DeliveryService {
         if (delivery.getTotalPrice() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Total price information missing");
         }
-        if (delivery.getDeliveryManId() == null) {
+        if (delivery.getDeliverymanCpf() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Deliveryman information missing");
         }
         if (delivery.getStatus().equals("CONFIRMADO") || delivery.getStatus().equals("ERRO") || delivery.getStatus().equals("FINALIZADO")){
@@ -42,9 +42,9 @@ public class DeliveryService {
 
     }
 
-    public List<Delivery> listDelivery(Integer idDeliveryMan){
-        if (idDeliveryMan != null){
-            return deliveryRepository.findByDeliveryManId(idDeliveryMan);
+    public List<Delivery> listDelivery(String deliverymanCpf){
+        if (deliverymanCpf != null){
+            return deliveryRepository.findByDeliverymanCpf(deliverymanCpf);
         }
         return deliveryRepository.findAll();
     }

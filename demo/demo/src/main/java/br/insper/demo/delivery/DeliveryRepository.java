@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DeliveryRepository extends JpaRepository<Delivery, Integer> {
-    List<Delivery> findByDeliveryManId(Integer idDeliveryMan);
+    List<Delivery> findByDeliverymanCpf(String deliverymanCpf);
 
     Optional<Delivery> findById(Integer id);
 

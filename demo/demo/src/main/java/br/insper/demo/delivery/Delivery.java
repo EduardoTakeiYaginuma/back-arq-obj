@@ -18,13 +18,13 @@ public class Delivery {
     private Double travelKm;
     private Double totalPrice;
     private String status;
-    private Integer deliveryManId;
+    private String deliverymanCpf;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    public Delivery(String origin, String destination, Double travelHours, Double travelKm, Double totalPrice, String status, Integer deliveryManId) {
+    public Delivery(String origin, String destination, Double travelHours, Double travelKm, Double totalPrice, String status, String deliverymanCpf) {
         this.startDate = LocalDateTime.now();
         this.origin = origin;
         this.destination = destination;
@@ -32,11 +32,10 @@ public class Delivery {
         this.travelKm = travelKm;
         this.totalPrice = totalPrice;
         this.status = status;
-        this.deliveryManId = deliveryManId;
+        this.deliverymanCpf = deliverymanCpf;
     }
 
-    public Delivery() {
-    }
+    public Delivery() {}
 
     public LocalDateTime getStartDate() {
         return startDate;
@@ -94,19 +93,19 @@ public class Delivery {
         this.status = status;
     }
 
-    public Integer getDeliveryManId() {
-        return deliveryManId;
-    }
-
-    public void setDeliveryManId(Integer deliveryManId) {
-        this.deliveryManId = deliveryManId;
-    }
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getDeliverymanCpf() {
+        return deliverymanCpf;
+    }
+
+    public void setDeliverymanCpf(String deliverymanCpf) {
+        this.deliverymanCpf = deliverymanCpf;
     }
 }
