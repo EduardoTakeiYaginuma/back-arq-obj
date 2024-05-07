@@ -35,10 +35,11 @@ public class DeliveryService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Deliveryman information missing");
         }
         if (delivery.getStatus().equals("CONFIRMADO") || delivery.getStatus().equals("ERRO") || delivery.getStatus().equals("FINALIZADO")){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Status information invalid");
+            return deliveryRepository.save(delivery);
         }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Status information invalid");
 
-        return deliveryRepository.save(delivery);
+
     }
 
     public List<Delivery> listDelivery(Integer idDeliveryMan){
