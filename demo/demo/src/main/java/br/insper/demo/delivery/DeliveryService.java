@@ -58,12 +58,19 @@ public class DeliveryService {
 
     }
 
-    public void putDelivery(Integer idDelivery, Integer status) {
-        Delivery delivery = deliveryRepository.findById(idDelivery)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Delivery not found"));
+    public void putDelivery(Integer idDelivery, String status) {
+        if (!status.equals("CONFIRMADO") && !status.equals("ERRO") && !status.equals("FINALIZADO")) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "");
+        }
 
-        delivery.setStatus(convertStatusToDescription(status));
-        deliveryRepository.save(delivery);
+        Optional<Delivery> delivery = deliveryRepository.findById(idDelivery);
+
+        if (!delivery.isPresent()) {
+           throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Delivery not found");
+        }
+
+        delivery.get().setStatus(status);
+        deliveryRepository.save(delivery.get());
     }
 
     private String convertStatusToDescription(Integer status) {
