@@ -35,6 +35,9 @@ public class Delivery {
         this.deliveryManId = deliveryManId;
     }
 
+    public Delivery() {
+    }
+
     public LocalDateTime getStartDate() {
         return startDate;
     }
