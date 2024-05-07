@@ -20,7 +20,7 @@ public class DeliveryController {
         return deliveryService.listDelivery(deliverymanCpf);
     }
     @DeleteMapping("/delivery/{id}")
-    public void deleteDelivery(@PathVariable Integer id){
+    public void deleteDelivery(@PathVariable String id){
         deliveryService.deleteDelevery(id);
     }
 

@@ -49,12 +49,12 @@ public class DeliveryService {
         return deliveryRepository.findAll();
     }
 
-    public void deleteDelevery(Integer idDelivery) {
-        Optional deliveryList = deliveryRepository.findById(idDelivery);
+    public void deleteDelevery(String idDelivery) {
+        Optional deliveryList = deliveryRepository.findById(Integer.valueOf(idDelivery));
         if (!deliveryList.isPresent()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Delivery not found");
         }
-        deliveryRepository.deleteById(idDelivery);
+        deliveryRepository.deleteById(Integer.valueOf(idDelivery));
 
     }
 
