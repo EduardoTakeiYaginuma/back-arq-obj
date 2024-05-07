@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Delivery {
-    private LocalDateTime startDate;
+    private LocalDateTime startDate = LocalDateTime.now();
     private String origin;
     private String destination;
     private Double travelHours;

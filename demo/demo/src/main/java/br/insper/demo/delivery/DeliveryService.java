@@ -37,9 +37,8 @@ public class DeliveryService {
         if (delivery.getStatus().equals("CONFIRMADO") || delivery.getStatus().equals("ERRO") || delivery.getStatus().equals("FINALIZADO")){
             return deliveryRepository.save(delivery);
         }
+
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Status information invalid");
-
-
     }
 
     public List<Delivery> listDelivery(String deliverymanCpf){
